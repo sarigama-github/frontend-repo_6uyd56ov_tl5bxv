@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Hero from './components/Hero'
-import Projects from './components/Projects'
-import About from './components/About'
+import Experiences from './components/Experiences'
 import Footer from './components/Footer'
 
 function App() {
@@ -10,7 +9,6 @@ function App() {
     description: '',
     hero: '',
     sections: [],
-    projects: [],
     socials: [],
     source: '',
   })
@@ -42,8 +40,7 @@ function App() {
             {data.title || 'Portfolio'}
           </a>
           <nav className="hidden gap-6 text-sm font-semibold text-slate-700 md:flex">
-            <a href="#projects" className="hover:text-indigo-600">Projects</a>
-            <a href="#about" className="hover:text-indigo-600">About</a>
+            <a href="#experience" className="hover:text-indigo-600">Experience</a>
             {data.source && (
               <a href={data.source} target="_blank" rel="noreferrer" className="hover:text-indigo-600">Source</a>
             )}
@@ -58,7 +55,7 @@ function App() {
         </div>
       ) : error ? (
         <div className="mx-auto max-w-2xl px-6 py-24 text-center">
-          <h2 className="text-2xl font-bold">Couldn\'t fetch data</h2>
+          <h2 className="text-2xl font-bold">Couldn't fetch data</h2>
           <p className="mt-2 text-slate-600">{error}</p>
         </div>
       ) : (
@@ -66,8 +63,7 @@ function App() {
           <div className="px-6 pt-6">
             <Hero title={data.title} description={data.description} hero={data.hero} />
           </div>
-          <Projects projects={data.projects} />
-          <About sections={data.sections} />
+          <Experiences sections={data.sections} />
           <Footer socials={data.socials} source={data.source} />
         </>
       )}
